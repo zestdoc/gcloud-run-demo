@@ -1,7 +1,7 @@
 FROM python:3.7
 ADD . /app
 WORKDIR /app
-RUN pip install starlette
+
 RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 RUN pip install fastai
 
