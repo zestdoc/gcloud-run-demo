@@ -1,10 +1,14 @@
 FROM python:3.7
 ADD . /app
 WORKDIR /app
+RUN pip install starlette
+RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
+RUN pip install fastai
+
 ENV FLASK_APP main.py
 ENV FLASK_RUN_HOST 0.0.0.0
 RUN apk add --no-cache gcc musl-dev linux-headers
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 COPY . .
-CMD ["flask", "run"]
+CMD ["flask", "run", "main.py"]
