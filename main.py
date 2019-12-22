@@ -9,7 +9,7 @@ from fastai.vision import *
 from flask_jsonpify import jsonify
 import pickle
 
-app = Flask(__name__, static_folder="../dist/templates", static_url_path="")
+app = Flask(__name__, static_folder="../templates", static_url_path="")
 api = Api(app)
 model = pickle.load(open('export.pkl', 'rb'))
 CORS(app)
